@@ -1,0 +1,16 @@
+Index: src/main/java/com/huzail/quizapp/controller/QuestionController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/huzail/quizapp/controller/QuestionController.java b/src/main/java/com/huzail/quizapp/controller/QuestionController.java
+--- a/src/main/java/com/huzail/quizapp/controller/QuestionController.java	
++++ b/src/main/java/com/huzail/quizapp/controller/QuestionController.java	(date 1713714132077)
+@@ -37,6 +37,6 @@
+         return questionService.deleteQuestion(id);
+     }
+ 
+-    
++
+ 
+ }
