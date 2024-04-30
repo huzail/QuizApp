@@ -2,6 +2,7 @@ package com.huzail.quizapp.controller;
 
 import com.huzail.quizapp.model.Question;
 import com.huzail.quizapp.model.QuestionWrapper;
+import com.huzail.quizapp.model.Quiz;
 import com.huzail.quizapp.model.Response;
 import com.huzail.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,14 @@ public class QuizController {
     public ResponseEntity<Integer> submitQuiz(@PathVariable int id, @RequestBody List<Response> responses){
         return quizService.calculateResult(id, responses);
     }
+
+    @GetMapping("allQuiz")
+    public ResponseEntity<List<Quiz>> getAllQuiz() {
+        return quizService.getAllQuiz();
+    }
+
+//    @GetMapping("allQuizScore")
+//    public ResponseEntity<List<Quiz>> getAllQuizScore() {
+//        return quizService.getAllQuizScore();
+//    }
 }

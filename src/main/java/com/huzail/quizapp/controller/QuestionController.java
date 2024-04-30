@@ -37,6 +37,9 @@ public class QuestionController {
         return questionService.deleteQuestion(id);
     }
 
-
+    @PostMapping("questionCategory/")
+    public ResponseEntity<Object[]> countQuestionsByCategory() {
+        return questionService.countQuestionsByCategory();
+    }
 
 }

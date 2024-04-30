@@ -59,4 +59,13 @@ public class QuestionService {
         return new ResponseEntity<>("Question didn't delete", HttpStatus.BAD_REQUEST);
     }
 
+    public ResponseEntity<Object[]> countQuestionsByCategory() {
+        try{
+            return new ResponseEntity<>(questionDao.countQuestionByCategory(), HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new Object[0], HttpStatus.BAD_REQUEST);
+    }
 }
