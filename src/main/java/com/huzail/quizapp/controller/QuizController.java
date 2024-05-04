@@ -5,6 +5,7 @@ import com.huzail.quizapp.model.QuestionWrapper;
 import com.huzail.quizapp.model.Quiz;
 import com.huzail.quizapp.model.Response;
 import com.huzail.quizapp.service.QuizService;
+import com.huzail.quizapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,23 +19,25 @@ public class QuizController {
 
     @Autowired
     QuizService quizService;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("create")
-    public ResponseEntity<String> createQuiz(@RequestParam String category, @RequestParam int numQ, @RequestParam String title) {
+    public ResponseEntity<String> createQuiz(@RequestParam String category, @RequestParam int numQ, @RequestParam String title, @RequestParam String username) {
 
-        return quizService.createQuiz(category, numQ, title);
+        return quizService.createQuiz(category, numQ, title, username);
     }
 
     @GetMapping("get/{id}")
-    public ResponseEntity<List<QuestionWrapper>> getQuizQuestion(@PathVariable int id) {
+    public ResponseEntity<List<QuestionWrapper>> getQuizQuestion(@PathVariable int id, @RequestParam String username) {
         // Wrapper
         // Use to send specific values not the all values oof table
-        return quizService.getQuizQuestion(id);
+        return quizService.getQuizQuestion(id, username);
     }
 
     @PostMapping("submit/{id}")
-    public ResponseEntity<Integer> submitQuiz(@PathVariable int id, @RequestBody List<Response> responses){
-        return quizService.calculateResult(id, responses);
+    public ResponseEntity<Integer> submitQuiz(@PathVariable int id, @RequestBody List<Response> responses, @RequestParam String username){
+        return quizService.calculateResult(id, responses, username);
     }
 
     @GetMapping("allQuiz")
